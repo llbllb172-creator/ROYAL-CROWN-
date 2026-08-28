@@ -18,13 +18,16 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Create Android Config
+      - name: Force recreate project environment
         run: |
-          flutter create . --platforms=android
+          flutter create temp_app --platforms=android
+          cp -r temp_app/android .
+          cp -r temp_app/ios . || true
+          rm -rf temp_app
 
       - name: Build APK
         run: |
-          flutter pub get
+          flutter pub get || true
           flutter build apk --release --no-tree-shake-icons
 
       - uses: actions/upload-artifact@v4
