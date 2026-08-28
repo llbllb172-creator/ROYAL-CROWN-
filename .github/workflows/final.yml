@@ -18,12 +18,12 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Rebuild Project Structure Safely
+      - name: Rebuild Project Safely
         run: |
           mkdir -p temp_code
           cp -r lib temp_code/ || true
           rm -rf *
-          flutter create . --platforms=android --org com.royalcrown.app
+          flutter create . --project-name royal_crown --platforms=android
           if [ -d "temp_code/lib" ]; then cp -r temp_code/lib/* lib/; fi
           rm -rf temp_code
 
