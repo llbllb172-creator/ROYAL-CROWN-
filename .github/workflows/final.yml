@@ -18,10 +18,6 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Create Android Project Skeleton if missing
-        run: |
-          flutter create . --platforms=android --overwrite
-
       - name: Build APK
         run: |
           flutter pub get
@@ -31,3 +27,4 @@ jobs:
         with:
           name: Royal-Crown-APK
           path: build/app/outputs/flutter-apk/app-release.apk
+          
