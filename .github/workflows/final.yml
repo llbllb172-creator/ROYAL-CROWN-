@@ -18,16 +18,18 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Force recreate project environment
+      - name: Rebuild Project Structure Safely
         run: |
-          flutter create temp_app --platforms=android
-          cp -r temp_app/android .
-          cp -r temp_app/ios . || true
-          rm -rf temp_app
+          mkdir -p temp_code
+          cp -r lib temp_code/ || true
+          rm -rf *
+          flutter create . --platforms=android --org com.royalcrown.app
+          if [ -d "temp_code/lib" ]; then cp -r temp_code/lib/* lib/; fi
+          rm -rf temp_code
 
       - name: Build APK
         run: |
-          flutter pub get || true
+          flutter pub get
           flutter build apk --release --no-tree-shake-icons
 
       - uses: actions/upload-artifact@v4
