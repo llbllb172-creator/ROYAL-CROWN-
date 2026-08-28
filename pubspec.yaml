@@ -1,0 +1,30 @@
+name: royal_crown
+description: Royal Crown Chat App
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  local_auth: ^2.1.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "IMG_20260818_165925.jpg"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - IMG_20260818_165925.jpg
